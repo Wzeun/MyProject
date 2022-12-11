@@ -4,6 +4,8 @@ namespace MyProject
 {
     class MainClass
     {
+        private const int ExitCode = 0;
+
         public static void Main(string[] args)
         {
             
@@ -11,10 +13,11 @@ namespace MyProject
             string Day = Console.ReadLine();
             int DayConvertToInt = Convert.ToInt32(Day);
 
-            if (DayConvertToInt > 531){
+            if (DayConvertToInt > 31){
 
                 Console.WriteLine("Введено не коректну дату");
-            }
+                Environment.Exit(ExitCode);
+                    }
 
             Console.WriteLine("Введите месяц:");
             string Month = Console.ReadLine();
@@ -22,6 +25,7 @@ namespace MyProject
 
             if (MonthConvertToInt > 12) {
                 Console.WriteLine("Введено некоректний місяць");
+                Environment.Exit(ExitCode);
             }
 
             int NewYearDay = 31;
