@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace MyProject
 {
@@ -8,65 +10,84 @@ namespace MyProject
 
         public static void Main(string[] args)
         {
-            
-            Console.WriteLine("Введите дату:");
-            string Day = Console.ReadLine();
-            int DayConvertToInt = Convert.ToInt32(Day);
-
-            if (Convert.ToInt32(Day) > 31)
+            Dictionary<string, int> NumberOfDaysInMonths = new Dictionary<string, int>()
             {
+                { "січень", 31 },
+                { "лютий", 28 },
+                { "березень", 31 },
+                { "квітень", 30 },
+                { "травень", 31 },
+                { "червень", 30 },
+                { "липень", 31 },
+                { "серпень", 31 },
+                { "вересень", 30 },
+                { "жовтень", 31 },
+                { "листопад", 30 },
+                { "грудень", 31 },
+            };
 
-                Console.WriteLine("Введено не коректну дату");
-                Environment.Exit(ExitCode);
+            Dictionary<string, int> NumberOfMonthInYear = new Dictionary<string, int>()
+            {
+                { "січень", 1 },
+                { "лютий", 2 },
+                { "березень", 3 },
+                { "квітень", 4 },
+                { "травень", 5 },
+                { "червень", 6 },
+                { "липень", 7 },
+                { "серпень", 8 },
+                { "вересень", 9 },
+                { "жовтень", 10 },
+                { "листопад", 11 },
+                { "грудень", 12 },
+            };
+
+            Console.WriteLine("Введіть дату:");
+            string Day = Console.ReadLine();
+            int DayConvertToInt;
+            try
+            {
+                 DayConvertToInt = Convert.ToInt32(Day);
             }
-            //else { //Environment.Exit(ExitCode); }
+            catch{
+                Console.WriteLine("Ви Ввели не число!");
+                Environment.Exit(0);
+                DayConvertToInt = Convert.ToInt32(Day);
+            }
 
-            Console.WriteLine("Введите месяц:");
+            if (Convert.ToInt32(Day) < 0) {
+                Console.WriteLine("Ви ввели дату яка мешне або яка дорівнює 0");
+                Environment.Exit(0);
+            }
+
+            
+
+            Console.WriteLine("Введіть місяць:");
             string Month = Console.ReadLine();
             string MonthToLower = Month.ToLower();
-            //int MonthConvertToInt = Convert.ToInt32(Month);
-            int FinallyMonth = 0;
-
-            if (Month == "Січень") { FinallyMonth = FinallyMonth + 1; }
-
-            if (Month == "Лютий") { FinallyMonth = FinallyMonth + 2; }
-
-            if (Month == "Березень") { FinallyMonth = FinallyMonth + 3; }
-
-            if (Month == "Квітень") { FinallyMonth = FinallyMonth + 4; }
-
-            if (Month == "Травень") { FinallyMonth = FinallyMonth + 5; }
-
-            if (Month == "Червень") { FinallyMonth = FinallyMonth + 6; }
-
-            if (Month == "Липень") { FinallyMonth = FinallyMonth + 7; }
-
-            if (Month == "Серпень") { FinallyMonth = FinallyMonth + 8; }
-
-            if (Month == "Вересень") { FinallyMonth = FinallyMonth + 9; }
-
-            if (Month == "Жовтень") { FinallyMonth = FinallyMonth + 10; }
-
-            if (Month == "Листопад") { FinallyMonth = FinallyMonth + 11; }
-
-            if (Month == "Грудень") { FinallyMonth = FinallyMonth + 12; }
-
-            else if (FinallyMonth > 12) {
-                Console.WriteLine("Введено некоректний місяць");
-                
+            
+            int FinallyMonth;
+            try {
+                FinallyMonth = Convert.ToInt32(Month);
             }
+            catch
+            {
+                FinallyMonth = NumberOfMonthInYear[MonthToLower];
 
-
-
-
-            Console.WriteLine(FinallyMonth);
+            }
             int NewYearDay = 31;
             int NewYearMonth = 12;
-
+            int NewYearDayFinally = NewYearDay - DayConvertToInt;
+            int NewYearMonthFinally = NewYearMonth - FinallyMonth;
+            if (NewYearDayFinally < 0) {
+                Console.WriteLine("Ви Ввели день, який більший ніж кількість днів в місяці який ви ввели!)");
+                Environment.Exit(0);
+            }
 
             Console.WriteLine($"Новий рік буде через {NewYearDay - DayConvertToInt} днів і {NewYearMonth - FinallyMonth} місяців. ");
-
+            Console.WriteLine("Слава Україні!");
         }
-        
+
     }
 }
+// кінець коду;)
