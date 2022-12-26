@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 
 
@@ -10,6 +11,7 @@ namespace MyProject
 
         public static void Main(string[] args)
         {
+
             Dictionary<string, int> NumberOfDaysInMonths = new Dictionary<string, int>()
             {
                 { "січень", 31 },
@@ -47,27 +49,30 @@ namespace MyProject
             int DayConvertToInt;
             try
             {
-                 DayConvertToInt = Convert.ToInt32(Day);
+                DayConvertToInt = Convert.ToInt32(Day);
             }
-            catch{
+            catch
+            {
                 Console.WriteLine("Ви Ввели не число!");
                 Environment.Exit(0);
                 DayConvertToInt = Convert.ToInt32(Day);
             }
 
-            if (Convert.ToInt32(Day) < 0) {
+            if (Convert.ToInt32(Day) < 0)
+            {
                 Console.WriteLine("Ви ввели дату яка мешне або яка дорівнює 0");
                 Environment.Exit(0);
             }
 
-            
+
 
             Console.WriteLine("Введіть місяць:");
             string Month = Console.ReadLine();
             string MonthToLower = Month.ToLower();
-            
+
             int FinallyMonth;
-            try {
+            try
+            {
                 FinallyMonth = Convert.ToInt32(Month);
             }
             catch
@@ -79,15 +84,15 @@ namespace MyProject
             int NewYearMonth = 12;
             int NewYearDayFinally = NewYearDay - DayConvertToInt;
             int NewYearMonthFinally = NewYearMonth - FinallyMonth;
-            if (NewYearDayFinally < 0) {
+            if (NewYearDayFinally < 0)
+            {
                 Console.WriteLine("Ви Ввели день, який більший ніж кількість днів в місяці який ви ввели!)");
                 Environment.Exit(0);
             }
 
-            Console.WriteLine($"Новий рік буде через {NewYearDay - DayConvertToInt} днів і {NewYearMonth - FinallyMonth} місяців. ");
+            Console.WriteLine($"Новий рік буде через {NewYearDayFinally} днів і {NewYearMonthFinally} місяців. ");
             Console.WriteLine("Слава Україні!");
         }
 
     }
 }
-// кінець коду;)
