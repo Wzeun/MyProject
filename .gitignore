@@ -404,4 +404,4 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
-.MyProject.csproj.user
+.MyProject/MyProject.csproj.user
