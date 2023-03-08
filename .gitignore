@@ -10,7 +10,6 @@ autom4te.cache/
 *.tar.gz
 tarballs/
 test-results/
-MyProject.csproj.user
 
 # Mac bundle stuff
 *.dmg
@@ -404,3 +403,5 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+MyProject.csproj.user
